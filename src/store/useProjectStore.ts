@@ -18,7 +18,7 @@ interface ProjectStore {
 // 3. Criamos a Store
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useProjectStore = create<ProjectStore>(() => ({
-      // Aqui dentro fica o "State" (como o state() do Pinia/Vuex)
+    // Aqui dentro fica o "State" (como o state() do Pinia/Vuex)
   projects: [
     {
       id: 1,
