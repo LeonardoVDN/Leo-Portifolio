@@ -1,20 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
+import PageTransition from './components/PageTransition'
 import Home from './pages/Home'
 import ProjectDetails from './pages/ProjectDetails'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
     <BrowserRouter>
-      {/* O Header fica FORA do Routes para aparecer em todas as páginas */}
       <Header />
-      
-      <Routes>
-        {/* Quando a URL for "/", renderize o componente Home */}
-        <Route path="/" element={<Home />} />
-        <Route path="/project/:id" element={<ProjectDetails />} />
-        {/* No futuro, adicionaremos a rota de detalhes aqui */}
-      </Routes>
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:id" element={<ProjectDetails />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PageTransition>
     </BrowserRouter>
   )
 }

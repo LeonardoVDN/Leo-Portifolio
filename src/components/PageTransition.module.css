@@ -1,0 +1,29 @@
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slideFromRight {
+  animation: slideInFromRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slideFromLeft {
+  animation: slideInFromLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

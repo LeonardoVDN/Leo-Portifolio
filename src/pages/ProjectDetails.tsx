@@ -1,69 +1,81 @@
 import { useParams, Link } from 'react-router-dom'
 import { useProjectStore } from '../store/useProjectStore'
+import { useNavigationStore } from '../store/useNavigationStore'
 import { techMap } from '../utils/techMap'
+import styles from './ProjectDetails.module.css'
 
 function ProjectDetails() {
-  const { id } = useParams() 
+  const { id } = useParams()
   const projects = useProjectStore((state) => state.projects)
+  const setDirection = useNavigationStore((state) => state.setDirection)
   const project = projects.find(p => p.id === Number(id))
+
+  const handleBack = () => setDirection('back')
 
   if (!project) {
     return (
-      <div style={{ padding: '20px', color: 'white' }}>
-        <h2>Projeto não encontrado!</h2>
-        <Link to="/" style={{ color: '#61dafb' }}>Voltar</Link>
+      <div className={styles.notFound}>
+        <h2 className={styles.notFoundTitle}>Projeto não encontrado</h2>
+        <Link to="/" className={styles.notFoundLink} onClick={handleBack}>
+          &larr; Voltar para Home
+        </Link>
       </div>
     )
   }
 
   return (
-    <div style={{ padding: '20px', color: 'white', maxWidth: '800px', margin: '0 auto' }}>
-      
-      <h1>{project.title}</h1>
-      <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>{project.description}</p>
-      
-      <div style={{ marginTop: '30px' }}>
-        <h3>Tecnologias:</h3>
-        
-        {/* 3. Renderização com Ícones (sem bolinhas de lista) */}
-        <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
-            {project.techs.map(tech => (
-              <div key={tech} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  {/* Tenta mostrar o ícone. Se não achar, mostra só o texto */}
-                  {techMap[tech] || <span>{tech}</span>} 
-                  
-                  {/* Opcional: Mostrar o nome ao lado do ícone para ficar claro */}
-                  <span>{tech}</span>
-              </div>
-            ))}
-        </div>
-      </div>
+    <div className={styles.page}>
+      <div className={styles.pageGlow} />
 
-      <div style={{ marginTop: '40px', display: 'flex', gap: '20px' }}>
-        <a 
-            href={project.link} 
-            target="_blank" 
-            rel="noreferrer"
-            style={{ 
-                backgroundColor: 'transparent',
-                color: '#61dafb', 
-                border: '1px solid #61dafb', 
-                padding: '12px 24px', 
-                borderRadius: '5px',
-                textDecoration: 'none',
-                fontWeight: 'bold',
-                fontSize: '1rem',
-                transition: 'all 0.2s'
-            }}
-        >
-            Ver no GitHub
-        </a>
-
-        <Link to="/" style={{ color: '#aaa', textDecoration: 'none', padding: '12px', alignSelf: 'center' }}>
-             Voltar para Home
+      <div className={styles.backBar}>
+        <Link to="/" className={styles.backLink} onClick={handleBack}>
+          &larr; Voltar
         </Link>
       </div>
 
+      <header className={styles.header}>
+        <h1 className={styles.title}>{project.title}</h1>
+        <p className={styles.description}>{project.description}</p>
+      </header>
+
+      <div className={styles.content}>
+        <div className={styles.section}>
+          <span className={styles.sectionLabel}>01 — O Desafio</span>
+          <h3 className={styles.sectionTitle}>Problema</h3>
+          <p className={styles.sectionText}>{project.challenge}</p>
+        </div>
+        <div className={styles.section}>
+          <span className={styles.sectionLabel}>02 — A Solução</span>
+          <h3 className={styles.sectionTitle}>Abordagem</h3>
+          <p className={styles.sectionText}>{project.solution}</p>
+        </div>
+      </div>
+
+      <div className={styles.stackSection}>
+        <span className={styles.sectionLabel}>03 — Stack</span>
+        <div className={styles.techList}>
+          {project.techs.map((tech) => (
+            <span key={tech} className={styles.techItem}>
+              {techMap[tech]}
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.actions}>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.btnGithub}
+        >
+          Ver no GitHub &rarr;
+        </a>
+        <Link to="/" className={styles.btnBack} onClick={handleBack}>
+          Voltar para Home
+        </Link>
+      </div>
     </div>
   )
 }
