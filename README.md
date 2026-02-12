@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Portfólio Pessoal - Leonardo Valentim
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o código-fonte do meu site de portfólio pessoal. O projeto foi desenvolvido para apresentar meus trabalhos, experiência e stack tecnológica de forma moderna e performática.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto foi construído com foco em arquitetura limpa e performance, utilizando:
 
-## React Compiler
+- **[React](https://reactjs.org/)** & **[TypeScript](https://www.typescriptlang.org/)** - Para a interface e lógica.
+- **[Vite](https://vitejs.dev/)** - Para build e desenvolvimento rápido.
+- **[Zustand](https://github.com/pmndrs/zustand)** - Para gerenciamento de estado global simples e escalável.
+- **CSS Modules** - Para estilização modular e organizada.
+- **React Router** - Para navegação entre páginas.
+- **React Icons** - Para ícones.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Funcionalidades
 
-## Expanding the ESLint configuration
+- **Apresentação (Hero)**: Introdução e resumo profissional.
+- **Sobre Mim**: Detalhes sobre minha jornada e filosofia de desenvolvimento.
+- **Tech Stack**: Visualização das tecnologias que domino.
+- **Projetos**: Galeria de projetos selecionados com detalhes (desafio, solução, tecnologias).
+- **Contato**: Links para redes sociais e e-mail.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Como rodar o projeto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/meu-portfolio.git
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. Entre na pasta do projeto:
+   ```bash
+   cd meu-portfolio
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Instale as dependências:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+5. Acesse `http://localhost:5173` no seu navegador.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+Desenvolvido por Leonardo Valentim
